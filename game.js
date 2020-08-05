@@ -93,7 +93,7 @@ function ControllerLogicGame(){
 
 function CardGame (cards , controllerLogicGame,scoreBoard){
 	var LINES = 4;
-	var COLS  = 5;
+	var COLS  = 3;
 	this.cards = cards;
 	var logicGame = controllerLogicGame;
 	var scoreBoardGameControl = scoreBoard;
@@ -112,6 +112,7 @@ function CardGame (cards , controllerLogicGame,scoreBoard){
 			for(var j = 0 ; j < COLS; j++){
 				card = cards[cardCount++];
 				var cardImage = document.createElement("img");
+				cardImage.setAttribute("style", "width: 120px; height: 120px;");
 				if (card.visible){
 					cardImage.setAttribute("src",card.getPathCardImage());
 				}else{
@@ -150,16 +151,13 @@ function CardGame (cards , controllerLogicGame,scoreBoard){
 }
 
 function BuilderCardGame(){
-	var pictures = new Array ('10.png','10.png',
-		'1.png','1.png',
-		'2.png','2.png',
-		'3.png','3.png',
-		'4.png','4.png',
-		'5.png','5.png',
-		'6.png','6.png',
-		'7.png','7.png',
-		'8.png','8.png',
-		'9.png','9.png');
+	var pictures = new Array (
+		'1.jpg','1.jpg',
+		'2.jpg','2.jpg',
+		'3.jpg','3.jpg',
+		'4.jpg','4.jpg',
+		'5.jpg','5.jpg',
+		'6.jpg','6.jpg');
 
 	this.doCardGame =  function (){
 		shufflePictures();
