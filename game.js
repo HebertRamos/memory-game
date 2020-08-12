@@ -51,12 +51,21 @@ function ControllerLogicGame(){
 	var block = false;
 	var TIME_SLEEP_BETWEEN_INTERVAL = 1000;
 	var eventController = this;
+	
+	var resp = {
+		'1.png': '10.jpg',
+		'2.png': '8.jpg',
+		'3.png': '6.jpg',
+		'4.jpg': '9.jpg',
+		'5.jpg': '7.jpg'
+	};
 
 	this.addEventListener =  function (eventName, callback){
 		eventController[eventName] = callback;
 	};
 
 	this.doLogicGame =  function (card,callback){
+		
 		if (!card.block && !block) {
 			if (firstSelected == null){
 				firstSelected = card;
@@ -69,7 +78,9 @@ function ControllerLogicGame(){
 			if (firstSelected != null && secondSelected != null){
 				block = true;
 				var timer = setInterval(function(){
-					if (secondSelected.equals(firstSelected)){
+					
+					
+					if (resp[secondSelected.picture] == firstSelected.picture ||  resp[firstSelected.picture] == secondSelected.picture){
 						firstSelected.block = true;
 						secondSelected.block = true;
 						eventController["correct"](); 
@@ -92,8 +103,8 @@ function ControllerLogicGame(){
 }
 
 function CardGame (cards , controllerLogicGame,scoreBoard){
-	var LINES = 4;
-	var COLS  = 3;
+	var LINES = 2;
+	var COLS  = 5;
 	this.cards = cards;
 	var logicGame = controllerLogicGame;
 	var scoreBoardGameControl = scoreBoard;
@@ -152,12 +163,12 @@ function CardGame (cards , controllerLogicGame,scoreBoard){
 
 function BuilderCardGame(){
 	var pictures = new Array (
-		'1.jpg','1.jpg',
-		'2.jpg','2.jpg',
-		'3.jpg','3.jpg',
-		'4.jpg','4.jpg',
-		'5.jpg','5.jpg',
-		'6.jpg','6.jpg');
+		'1.png','10.jpg',
+		'2.png','8.jpg',
+		'3.png','6.jpg',
+		'4.jpg','9.jpg',
+		'5.jpg','7.jpg'		
+	);
 
 	this.doCardGame =  function (){
 		shufflePictures();
