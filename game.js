@@ -26,7 +26,7 @@ function ScoreBoardGameControl (){
 
 function Card(picture){
 	var FOLDER_IMAGES = 'resources/'
-	var IMAGE_QUESTION  = "question.png"
+	var IMAGE_QUESTION  = "question.jpeg"
 	this.picture = picture;
 	this.visible = false;
 	this.block = false;
